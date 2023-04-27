@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -14,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -57,9 +59,22 @@ fun Rodape() {
         .padding(start = 20.dp),
         verticalArrangement = Arrangement.Bottom,
     ) {
-        Contato()
-        Contato()
-        Contato()
+
+
+        Contato(
+            painter = painterResource(id = R.drawable.email),
+            text = "nicolascesar.limasoares@gmail.com"
+
+        )
+        Contato(
+            painter = painterResource(id = R.drawable.contato),
+            text = "(11)0982-8922"
+        )
+        Contato(
+            painter = painterResource(id = R.drawable.instagram),
+            text = "@nick_tylr"
+
+        )
 
 
     }
@@ -67,26 +82,40 @@ fun Rodape() {
 }
 
 @Composable
-fun Contato() {
+fun Contato(painter: Painter, text:String) {
+
+        Divider(
+            color = Color.Red,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(0.5.dp)
+        )
 
 
     Row() {
         Image(
-            painter = painterResource(id = R.drawable.contato),
+            painter = painter,
             contentDescription = null,
         contentScale = ContentScale.Crop,
-            modifier = Modifier.size(30.dp)
+            modifier = Modifier
+                .size(30.dp)
                 .clip(CircleShape)
 
         )
         Text(
-            text = "xxxx-xxxxx",
+            text = text,
         fontSize = 20.sp,
         color = Color.White,
         fontWeight = FontWeight.Bold
         )
+
+
     }
 }
+
+
+
+
 
 @Composable
 fun Cabecalho() {
